@@ -8,6 +8,8 @@ stack:
   loadBalancerIP: 192.168.2.111
   lbClass: kube-vip.io/kube-vip-class
   image: nginx:1.23.1
+  nodeSelector:
+    kubernetes.io/hostname: "provisioner-node"
   hook:
     enabled: true
     name: hook-files
@@ -63,10 +65,15 @@ boots:
 # hegel chart overrides
 hegel:
   image: quay.io/tinkerbell/hegel:v0.10.1
+  service:
+    type: LoadBalancer
+  loadBalancerIP: 192.168.2.111
 
 # rufio chart overrides
 rufio:
   image: quay.io/tinkerbell/rufio:v0.1.0
+  nodeSelector:
+    kubernetes.io/hostname: "provisioner-node"
 
 # tink chart overrides
 tink:

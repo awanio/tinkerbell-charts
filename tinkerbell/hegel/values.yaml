@@ -18,3 +18,4 @@ resources:
     memory: 64Mi
 roleName: hegel-role
 roleBindingName: hegel-rolebinding
+externalIP: 192.168.2.111

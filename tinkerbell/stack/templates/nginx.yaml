@@ -92,6 +92,9 @@ spec:
           items:
             - key: nginx.conf
               path: nginx.conf.template
+      {{- with .Values.nodeSelector }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
 ---
 apiVersion: v1
 kind: Service
@@ -111,10 +114,6 @@ spec:
   {{- end }}
   externalTrafficPolicy: Local
   ports:
-  - name: {{ .Values.hegel.name }}
-    port: {{ .Values.hegel.deployment.port }}
-    protocol: TCP
-    targetPort: {{ .Values.hegel.deployment.portName }}
   - name: {{ .Values.tink.server.name }}
     port: {{ .Values.tink.server.deployment.port }}
     protocol: TCP
