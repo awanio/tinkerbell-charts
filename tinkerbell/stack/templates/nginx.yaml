@@ -110,8 +110,9 @@ metadata:
 spec:
   type: {{ .Values.stack.service.type }}
   {{- if eq .Values.stack.service.type "LoadBalancer" }}
-  loadBalancerClass: {{ .Values.stack.lbClass }}
-  loadBalancerIP: {{ .Values.stack.loadBalancerIP }}
+  # loadBalancerClass: {{ .Values.stack.lbClass }}
+  externalIPs:
+  - {{ .Values.stack.loadBalancerIP }}
   {{- end }}
   externalTrafficPolicy: Local
   ports:

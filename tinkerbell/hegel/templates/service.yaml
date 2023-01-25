@@ -9,7 +9,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   {{- if eq .Values.service.type "LoadBalancer" }}
-  loadBalancerIP: {{ .Values.loadBalancerIP }}
+  externalIPs:
+  - {{ .Values.loadBalancerIP }}
   {{- end }}
   externalTrafficPolicy: Local
   ports:
