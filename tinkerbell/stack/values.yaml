@@ -35,6 +35,8 @@ stack:
 # boots chart overrides
 boots:
   image: quay.io/tinkerbell/boots:v0.8.0
+  nodeSelector:
+    kubernetes.io/hostname: "provisioner-node"
   env:
     - name: DATA_MODEL_VERSION
       value: "kubernetes"

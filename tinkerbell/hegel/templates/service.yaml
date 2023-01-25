@@ -7,9 +7,9 @@ metadata:
   name: {{ .Values.name }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
-  type: {{ .Values.stack.service.type }}
-  {{- if eq .Values.stack.service.type "LoadBalancer" }}
-  loadBalancerIP: {{ .Values.stack.loadBalancerIP }}
+  type: {{ .Values.service.type }}
+  {{- if eq .Values.service.type "LoadBalancer" }}
+  loadBalancerIP: {{ .Values.loadBalancerIP }}
   {{- end }}
   externalTrafficPolicy: Local
   ports:
